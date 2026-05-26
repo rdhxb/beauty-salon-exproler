@@ -210,11 +210,11 @@ curl -X DELETE http://localhost:8080/api/salons/1
 
 | Page | Image |
 | --- | --- |
-| Home | `![Home](docs/home.png)` |
-| All salons | `![Salons list](docs/salons.png)` |
-| Salon detail | `![Salon detail](docs/salon-details.png)` |
-| Districts filter | `![Districts](docs/districts.png)` |
-| Top 10 | `![Top 10](docs/top10.png)` |
+| Home | ![Home](docs/home.png) |
+| All salons | ![Salons list](docs/salons.png) |
+| Salon detail | ![Salon detail](docs/salon-details.png) |
+| Districts filter | ![Districts](docs/districts.png) |
+| Top 10 | ![Top 10](docs/top10.png) |
 
 ---
 
