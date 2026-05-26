@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wszystkie salony</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="container">
+    <h1>Wszystkie salony</h1>
+
+    <form action="/districts" method="get" class="filter-form">
+        <input type="text" name="district"
+               placeholder="🔍 Szukaj po dzielnicy (np. Mokotów)"
+               required>
+        <button type="submit">Filtruj</button>
+    </form>
+
+    <p class="subtitle">
+        Łącznie: <strong th:text="${salons.size()}">0</strong> salonów
+    </p>
+
+    <p th:if="${salons.isEmpty()}" class="empty-state">Brak salonów w bazie.</p>
+
+    <div class="salon-grid" th:unless="${salons.isEmpty()}">
+        <th:block th:each="salon : ${salons}">
+            <div th:replace="~{fragments/salon-card :: card(${salon})}"></div>
+        </th:block>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Beauty Salon Explorer</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="container hero">
+    <h1>Beauty Salon Explorer</h1>
+    <p class="hero-subtitle">
+        Przeglądaj salony beauty w Warszawie. Filtruj według dzielnicy,
+        sprawdzaj oceny i godziny otwarcia.
+    </p>
+    <div class="hero-actions">
+        <a href="/salons" class="btn-primary">Zobacz wszystkie salony</a>
+        <a href="/salons/top10" class="btn-primary">Zobacz TOP 10</a>
+        <a href="/salons/open" class="btn-primary">Zobacz otwarte salony</a>
+
+    </div>
+</main>
+</body>
+</html>

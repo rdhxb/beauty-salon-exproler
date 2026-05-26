@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<body>
+<a th:fragment="card(salon)" class="salon-card" th:href="@{/salons/{id}(id=${salon.id})}">
+    <div class="salon-card-header">
+        <h2 th:text="${salon.name}">Nazwa salonu</h2>
+        <span th:if="${salon.isOpen}" class="status-open">● Otwarte</span>
+        <span th:unless="${salon.isOpen}" class="status-closed">● Zamknięte</span>
+    </div>
+    <p class="salon-address" th:text="${salon.address}">Adres</p>
+    <p class="salon-meta">
+        <span class="badge" th:text="${salon.district}">Dzielnica</span>
+    </p>
+    <p class="salon-rating">
+        <span class="rating-value" th:text="${salon.rating}">0.0</span>
+        <span class="rating-count">(<span th:text="${salon.reviewCount}">0</span> opinii)</span>
+    </p>
+</a>
+</body>
+</html>

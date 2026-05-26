@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${salon.name}">Szczegóły salonu</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="container">
+    <a href="/salons" class="back-link">← Wróć do listy</a>
+
+    <div class="details-card">
+        <div class="details-header">
+            <h1 th:text="${salon.name}">Nazwa salonu</h1>
+            <span th:if="${salon.isOpen}" class="status-open">● Otwarte</span>
+            <span th:unless="${salon.isOpen}" class="status-closed">● Zamknięte</span>
+        </div>
+
+        <div class="details-info">
+            <p><strong>Adres:</strong> <span th:text="${salon.address}"></span></p>
+            <p><strong>Dzielnica:</strong>
+                <span class="badge" th:text="${salon.district}"></span>
+            </p>
+            <p><strong>Telefon:</strong> <span th:text="${salon.phone}"></span></p>
+            <p th:if="${salon.website != null and salon.website != 'brak'}">
+                <strong>WWW:</strong>
+                <a th:href="${salon.website}" th:text="${salon.website}" target="_blank"></a>
+            </p>
+            <p><strong>Ocena:</strong>
+                <span class="rating-value" th:text="${salon.rating}"></span>
+                <span class="rating-count">(<span th:text="${salon.reviewCount}"></span> opinii)</span>
+            </p>
+        </div>
+
+        <details th:if="${salon.weeklyDescription != null and !salon.weeklyDescription.isBlank()}"
+                 class="hours-block">
+            <summary>Godziny otwarcia</summary>
+            <p th:text="${salon.weeklyDescription}"></p>
+        </details>
+
+        <hr>
+
+        <div class="edit-section">
+            <h2>Zmień dzielnicę</h2>
+            <form th:action="@{/salons/{id}/district(id=${salon.id})}" method="post"
+                  class="edit-form">
+                <input type="text" name="district"
+                       th:value="${salon.district}"
+                       required>
+                <button type="submit">Zapisz</button>
+            </form>
+        </div>
+
+        <div class="danger-zone">
+            <form th:action="@{/salons/{id}/delete(id=${salon.id})}" method="post"
+                  onsubmit="return confirm('Na pewno usunąć ten salon?');">
+                <button type="submit" class="btn-danger">Usuń salon</button>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

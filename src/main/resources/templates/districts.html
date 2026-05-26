@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Salony według dzielnicy</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="container">
+    <h1>Salony według dzielnicy</h1>
+
+    <form action="/districts" method="get" class="filter-form">
+        <input type="text" name="district"
+               th:value="${selectedDistrict}"
+               placeholder="🔍 Szukaj po dzielnicy (np. Mokotów)"
+               required>
+        <button type="submit">Filtruj</button>
+        <a href="/salons" class="btn-clear">Pokaż wszystkie</a>
+    </form>
+
+    <div th:if="${selectedDistrict != null and !selectedDistrict.isBlank()}">
+        <p class="subtitle">
+            Wyniki dla <em th:text="${selectedDistrict}"></em>:
+            <strong th:text="${salons.size()}">0</strong>
+        </p>
+
+        <p th:if="${salons.isEmpty()}" class="empty-state">
+            Brak salonów w dzielnicy <strong th:text="${selectedDistrict}"></strong>.
+        </p>
+
+        <div class="salon-grid" th:unless="${salons.isEmpty()}">
+            <th:block th:each="salon : ${salons}">
+                <div th:replace="~{fragments/salon-card :: card(${salon})}"></div>
+            </th:block>
+        </div>
+    </div>
+
+    <p th:if="${selectedDistrict == null or selectedDistrict.isBlank()}" class="empty-state">
+        👆 Wpisz nazwę dzielnicy, żeby zobaczyć salony.
+    </p>
+</main>
+</body>
+</html>

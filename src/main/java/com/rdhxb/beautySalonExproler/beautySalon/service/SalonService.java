@@ -34,7 +34,7 @@ public class SalonService {
     }
 
     public List<Salon> getOpenSalons(){
-        return salonRepo.findByIsOpenTrue(true);
+        return salonRepo.findByIsOpenTrue();
     }
 
     public List<Salon> getBestSalons(){

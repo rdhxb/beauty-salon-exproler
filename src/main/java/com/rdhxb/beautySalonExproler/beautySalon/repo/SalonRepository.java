@@ -8,5 +8,5 @@ import java.util.List;
 public interface SalonRepository extends JpaRepository<Salon,Long> {
     List<Salon> findByDistrict(String district);
 
-    List<Salon> findByIsOpenTrue(boolean isOpen);
+    List<Salon> findByIsOpenTrue();
 }
