@@ -2,8 +2,8 @@ package com.rdhxb.beautySalonExproler.beautySalon.controller;
 
 import com.rdhxb.beautySalonExproler.beautySalon.entity.Salon;
 import com.rdhxb.beautySalonExproler.beautySalon.service.SalonService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

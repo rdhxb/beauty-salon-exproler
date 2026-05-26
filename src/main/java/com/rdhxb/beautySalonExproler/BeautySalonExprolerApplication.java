@@ -1,5 +1,6 @@
 package com.rdhxb.beautySalonExproler;
 
+import com.rdhxb.beautySalonExproler.beautySalon.repo.SalonRepository;
 import com.rdhxb.beautySalonExproler.dataCollector.DataCollector;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +15,11 @@ public class BeautySalonExprolerApplication {
 	}
 
 	@Bean
-	CommandLineRunner runDataCollector(DataCollector dataCollector) {
-		return args -> dataCollector.collectAndSave();
+	CommandLineRunner runDataCollector(DataCollector dataCollector, SalonRepository repo) {
+		return args -> {
+			if (repo.count() == 0) {
+				dataCollector.collectAndSave();
+			}
+		};
 	}
 }
