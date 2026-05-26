@@ -115,7 +115,7 @@ A populated H2 database is intentionally committed under `./data/salon_db.mv.db`
 ```bash
 # clone the repo
 git clone https://github.com/rdhxb/beauty-salon-exproler
-cd beautySalonExploler
+cd beauty-salon-exproler
 
 # Linux / macOS
 ./mvnw spring-boot:run
